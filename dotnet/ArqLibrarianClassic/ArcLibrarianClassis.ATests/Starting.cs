@@ -20,8 +20,8 @@ namespace Bnsit.ArqLibrarianClassic.ATests
         [SetUp]
         public void SetupFixture()
         {
-            userIn = new SpyUserIn();
             userOut = new SpyUserOut();    
+            userIn = new SpyUserIn(userOut);
 
             application = new Application(userIn, userOut);
 
@@ -94,6 +94,24 @@ namespace Bnsit.ArqLibrarianClassic.ATests
             SystemShows(Title("Ogniem i mieczem"));          
         }
 
+        [Test]
+        public void ShouldRateABook()
+        {
+            const long BookId = 8;
+            const int Rating = 4;
+            //given
+            //see SetUp
+            HasBook("Ogniem i mieczem", "Henryk Sienkiewicz", "978-83-08-06015-5", "Wydawnictwo Literackie", 2016, "Podręczniki i lektury szkolne");
+
+            //when
+            UserEnters($"rate {BookId} {Rating}");
+            UserEnters("search ogniem i mieczem");
+
+            Then();
+            SystemShows($"Ogniem i mieczem rated: {Rating}");
+            SystemShows($"Ogniem i mieczem* rating: {Rating}");
+        }
+
         private void HasBook(string title, string author, string isbn, string publisher, int year, string category)
         {
             booksManager.Create(title, author, isbn, publisher, year, category);
@@ -112,7 +130,7 @@ namespace Bnsit.ArqLibrarianClassic.ATests
 
         private void SystemShows(string text)
         {
-            userOut.AssertContains(text);
+            userOut.AssertContains(text.Replace("*", ".*"));
         }
 
         private void Then()

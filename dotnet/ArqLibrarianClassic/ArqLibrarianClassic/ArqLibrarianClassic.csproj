@@ -32,6 +32,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Library\LibrarianException.cs" />
     <Compile Include="Library\Book.cs" />
     <Compile Include="Library\BooksManager.cs" />
     <Compile Include="Library\Generated.cs" />

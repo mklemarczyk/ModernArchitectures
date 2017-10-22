@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using NUnit.Framework;
 
 namespace Bnsit.ArqLibrarianClassic.ATests
 {
-    public class SpyUserOut : UserOut
+    public class SpyUserOut : UserOut, InputAware
     {
         private readonly List<string> history = new List<string>();
 
@@ -25,16 +26,16 @@ namespace Bnsit.ArqLibrarianClassic.ATests
             history.Add("");
         }
 
-        internal void AssertContains(string text)
+        internal void AssertContains(string expression)
         {
             if (history.Count == 0) 
             {
-                Assert.Fail("No entries containing: " + text);
+                Assert.Fail("No entries containing: " + expression);
             }
 
-            Assert.IsTrue(history.FindAll(x => x.Contains(text)).Count > 0,
+            Assert.IsTrue(history.FindAll(x => Regex.IsMatch(x, expression)).Count > 0,
                 $"{Environment.NewLine}" +
-                $"UI does not contain '{text}'.{Environment.NewLine}" +
+                $"UI does not contain '{expression}'.{Environment.NewLine}" +
                 $"{this.FormatHistory()}");
         }
 
@@ -51,6 +52,11 @@ namespace Bnsit.ArqLibrarianClassic.ATests
                 $"{Environment.NewLine}" +
                 $"UI contains less than {expectedCount} lines{Environment.NewLine}" +
                 $"{this.FormatHistory()}");
+        }
+
+        public void OnTextLineEntered(string text)
+        {
+            PrintLine(text);
         }
     }
 }

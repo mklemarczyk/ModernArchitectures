@@ -26,6 +26,16 @@ namespace Bnsit.ArqLibrarianClassic.Library
             return books.Where(b => b.Title.ToLower().Contains(title.ToLower()));
         }
 
+        public Book FindById(long id)
+        {
+            return books.FirstOrDefault(b => b.Id == id);
+        }
+
+        public void Save(Book book)
+        {
+            //nothing to be done, it's memory implementation, so everything is "persisted" instantly
+        }
+
         public void Init()
         {
             books.Clear();

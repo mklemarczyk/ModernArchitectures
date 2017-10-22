@@ -11,6 +11,7 @@ namespace Bnsit.ArqLibrarianClassic.Library
         public string Publisher { get; }
         public int Year { get; }
         public string Category { get; }
+        public int Rating { get; set; }
 
         public Book(string title, string author, string isbn, string publisher, int year, string category)
         {
@@ -20,11 +21,18 @@ namespace Bnsit.ArqLibrarianClassic.Library
             this.Publisher = publisher;
             this.Year = year;
             this.Category = category;
+            this.Rating = -1;
         }
 
         public override string ToString()
         {
-            return $"{this.Id}: '{this.Title}' - {this.Author} [{this.Isbn}] '{this.Publisher}', {this.Year}, '{this.Category}'";
+            return $"{this.Id}: '{this.Title}' - {this.Author} [{this.Isbn}] '{this.Publisher}', {this.Year}, '{this.Category}'" +
+                   $" rating: {RatingString()}";
+        }
+
+        private string RatingString()
+        {
+            return this.Rating > 0 ? this.Rating.ToString() : "Not rated yet.";
         }
     }
 }

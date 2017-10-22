@@ -14,7 +14,6 @@ namespace Bnsit.ArqLibrarianClassic.Library
             Assert.AreEqual(3, Generated.BookId());
             Assert.AreEqual(4, Generated.BookId());
             Assert.AreEqual(5, Generated.BookId());
-        }
-        
+        }     
     }
 }

@@ -7,5 +7,7 @@ namespace Bnsit.ArqLibrarianClassic.Library
          void Insert(Book book);
          IEnumerable<Book> FindAll();
          IEnumerable<Book> FindByTitle(string title);
+         Book FindById(long id);
+         void Save(Book book);
      }
  }

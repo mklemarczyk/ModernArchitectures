@@ -31,6 +31,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InputAware.cs" />
     <Compile Include="Library\GeneratedTest.cs" />
     <Compile Include="SpyUserIn.cs" />
     <Compile Include="SpyUserOut.cs" />

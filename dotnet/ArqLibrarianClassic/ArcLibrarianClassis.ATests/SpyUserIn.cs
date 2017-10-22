@@ -7,11 +7,18 @@ namespace Bnsit.ArqLibrarianClassic.ATests
 {
     public class SpyUserIn : UserIn
     {
-        private Queue<string> entered = new Queue<string>();
+        private readonly InputAware input;
+        private readonly Queue<string> entered = new Queue<string>();
+
+        public SpyUserIn(InputAware input)
+        {
+            this.input = input;
+        }
 
         internal void EnterLine(string text)
         {
             entered.Enqueue(text);
+            input.OnTextLineEntered(text);
         }
 
         public string ReadLine()

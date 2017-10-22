@@ -25,5 +25,23 @@ namespace Bnsit.ArqLibrarianClassic.Library
         {
             return dao.FindByTitle(title);
         }
+
+        public void Rate(long id, int rating)
+        {
+            Book book = dao.FindById(id);
+            if (book == null)
+            {
+                throw new LibrarianException($"Book not found with id = {id}");
+            }
+
+            book.Rating = rating;
+
+            dao.Save(book);
+        }
+
+        public Book FindById(long id)
+        {
+            return dao.FindById(id);
+        }
     }
 }

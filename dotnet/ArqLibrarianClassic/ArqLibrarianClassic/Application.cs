@@ -40,6 +40,9 @@ namespace Bnsit.ArqLibrarianClassic
                     case "search":
                         SearchBook(commandString);
                         break;
+                    case "rate":
+                        RateBook(args);
+                        break;
                     case "add":
                         AddBook();
                         break;
@@ -53,6 +56,21 @@ namespace Bnsit.ArqLibrarianClassic
             }
 
             return running;
+        }
+
+        private void RateBook(string[] args)
+        {
+            if (args.Length != 3)
+            {
+                output.PrintLine("Wrong rate command format. Try: rate [book id] [rating]");
+            }
+            var bookId = long.Parse(args[1]);
+            var rating = int.Parse(args[2]);
+
+            booksManager.Rate(bookId, rating);
+            var book = booksManager.FindById(bookId);
+            
+            output.PrintLine($"{book.Title} rated: {book.Rating}");
         }
 
         private void SearchBook(string command)
