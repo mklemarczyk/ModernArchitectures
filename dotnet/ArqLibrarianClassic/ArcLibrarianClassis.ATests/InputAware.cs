@@ -1,4 +1,4 @@
-﻿namespace Bnsit.ArqLibrarianClassic.ATests
+﻿namespace ArcLibrarianClassis.ATests
 {
     public interface InputAware
     {

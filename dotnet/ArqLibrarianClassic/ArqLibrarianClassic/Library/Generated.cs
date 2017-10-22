@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Bnsit.ArqLibrarianClassic.Library
+namespace ArqLibrarianClassic.Library
 {
     public static class Generated
     {

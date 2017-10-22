@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Bnsit.ArqLibrarianClassic.Library;
+using ArqLibrarianClassic.Library;
 
-namespace Bnsit.ArqLibrarianClassic
+namespace ArqLibrarianClassic
 {
     public class Application
     {

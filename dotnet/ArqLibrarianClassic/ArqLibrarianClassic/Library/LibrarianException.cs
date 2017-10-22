@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Bnsit.ArqLibrarianClassic.Library
+namespace ArqLibrarianClassic.Library
 {
     public class LibrarianException : Exception
     {

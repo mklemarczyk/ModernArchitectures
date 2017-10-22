@@ -1,6 +1,7 @@
-﻿using NUnit.Framework;
+﻿using ArqLibrarianClassic.Library;
+using NUnit.Framework;
 
-namespace Bnsit.ArqLibrarianClassic.Library
+namespace ArcLibrarianClassis.ATests
 {
     [TestFixture]
     public class GeneratedTest

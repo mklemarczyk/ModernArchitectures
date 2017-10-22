@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using ArqLibrarianClassic;
 using NUnit.Framework;
 
-namespace Bnsit.ArqLibrarianClassic.ATests
+namespace ArcLibrarianClassis.ATests
 {
     public class SpyUserOut : UserOut, InputAware
     {

@@ -1,7 +1,6 @@
-﻿using System;
-using Bnsit.ArqLibrarianClassic.Library;
+﻿using ArqLibrarianClassic.Library;
 
-namespace Bnsit.ArqLibrarianClassic
+namespace ArqLibrarianClassic
 {
     static class MainClass
     {

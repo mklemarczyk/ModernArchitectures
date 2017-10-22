@@ -1,5 +1,4 @@
-﻿using System;
-namespace Bnsit.ArqLibrarianClassic
+﻿namespace ArqLibrarianClassic
 {
     public interface UserIn
     {

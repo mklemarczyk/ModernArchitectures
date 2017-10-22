@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Bnsit.ArqLibrarianClassic.Library
+﻿namespace ArqLibrarianClassic.Library
 {
     public class Book
     {
@@ -27,12 +25,12 @@ namespace Bnsit.ArqLibrarianClassic.Library
         public override string ToString()
         {
             return $"{this.Id}: '{this.Title}' - {this.Author} [{this.Isbn}] '{this.Publisher}', {this.Year}, '{this.Category}'" +
-                   $" rating: {RatingString()}";
+                   $" {RatingString()}";
         }
 
         private string RatingString()
         {
-            return this.Rating > 0 ? this.Rating.ToString() : "Not rated yet.";
+            return this.Rating > 0 ? $"rating: {this.Rating.ToString()}" : ". Not rated yet.";
         }
     }
 }

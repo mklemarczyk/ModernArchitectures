@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using ArqLibrarianClassic;
 
-namespace Bnsit.ArqLibrarianClassic.ATests
+namespace ArcLibrarianClassis.ATests
 {
     public class SpyUserIn : UserIn
     {
