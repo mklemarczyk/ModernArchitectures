@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 
-namespace ArqLibrarianClassic.ATests
+namespace Bnsit.ArqLibrarianClassic.ATests
 {
     public class SpyUserOut : UserOut
     {

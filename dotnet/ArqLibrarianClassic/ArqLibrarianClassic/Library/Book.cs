@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ArqLibrarianClassic.Library
+namespace Bnsit.ArqLibrarianClassic.Library
 {
     public class Book
     {

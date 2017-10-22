@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
-using ArqLibrarianClassic.Library;
+using Bnsit.ArqLibrarianClassic.Library;
 
-namespace ArqLibrarianClassic.Library
+namespace Bnsit.ArqLibrarianClassic.Library
 {
     public class MemoryBooksDao : BooksDao
     {

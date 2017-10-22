@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ArqLibrarianClassic.Library
+namespace Bnsit.ArqLibrarianClassic.Library
  {
      public interface BooksDao
      {

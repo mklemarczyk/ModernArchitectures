@@ -1,9 +1,9 @@
 ﻿using System.Net;
 using System.Security.Policy;
 using NUnit.Framework;
-using ArqLibrarianClassic.Library;
+using Bnsit.ArqLibrarianClassic.Library;
 
-namespace ArqLibrarianClassic.ATests
+namespace Bnsit.ArqLibrarianClassic.ATests
 {
     [TestFixture()]
     public class Starting

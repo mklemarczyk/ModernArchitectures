@@ -1,5 +1,5 @@
 ﻿using System;
-namespace ArqLibrarianClassic
+namespace Bnsit.ArqLibrarianClassic
 {
     public class ConsoleOut : UserOut
     {

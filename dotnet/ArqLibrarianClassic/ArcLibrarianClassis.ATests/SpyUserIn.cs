@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ArqLibrarianClassic.ATests
+namespace Bnsit.ArqLibrarianClassic.ATests
 {
     public class SpyUserIn : UserIn
     {
