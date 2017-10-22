@@ -8,6 +8,7 @@ namespace ArqLibrarianClassic.Library
         [Test]
         public void ShouldGenerateConsequtiveIdsForBooks()
         {
+            Generated.ResetBookId();
             Assert.AreEqual(1, Generated.BookId());
             Assert.AreEqual(2, Generated.BookId());
             Assert.AreEqual(3, Generated.BookId());

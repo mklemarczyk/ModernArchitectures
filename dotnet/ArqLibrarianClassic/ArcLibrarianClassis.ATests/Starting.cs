@@ -8,11 +8,14 @@ namespace ArqLibrarianClassic.ATests
     [TestFixture()]
     public class Starting
     {
-        const int BOOKS_COUNT = 7;
+        private const int BooksCount = 7;
 
         private Application application;
         private SpyUserIn userIn;
         private SpyUserOut userOut;
+        
+        private BooksManager booksManager;
+
 
         [SetUp]
         public void SetupFixture()
@@ -21,14 +24,19 @@ namespace ArqLibrarianClassic.ATests
             userOut = new SpyUserOut();    
 
             application = new Application(userIn, userOut);
+
+            // given
+            ApplicationStarted();
+            HasSampleBooks();
         }
 
 
         [Test()]
         public void ShouldShowHelloAtTheBegining()
-        {
-            // given
-            ApplicationStarted();
+        {            
+            //given
+            //see SetUp
+
             Then();
             WelcomeTextDisplayed();
         }
@@ -37,7 +45,8 @@ namespace ArqLibrarianClassic.ATests
         public void ShouldSearchAllBooks()
         {
             //given
-            ApplicationStarted();
+            //see SetUp
+
             //when
             UserEnters("search");
             Then();
@@ -45,7 +54,55 @@ namespace ArqLibrarianClassic.ATests
             SystemShows(Publisher("ZIELONA SOWA"));
             SystemShows(Title("Renesans"));
             SystemShows(Author("Jerzy Konieczny"));
-            SystemShowsAtLeastLines(BOOKS_COUNT);
+            SystemShowsAtLeastLines(BooksCount);
+        }
+
+        [Test]
+        public void ShouldAddBook()
+        {
+            //given
+            //see SetUp
+            UserEnters("add");
+            UserEnters("Ogniem i mieczem");
+            UserEnters("Henryk Sienkiewicz");
+            UserEnters("978-83-08-06015-5");
+            UserEnters("Wydawnictwo Literackie");
+            UserEnters("2016");
+            UserEnters("Podręczniki i lektury szkolne");
+            
+            //when
+            UserEnters("search");
+            
+            Then();
+            SystemShows(Title("Ogniem i mieczem"));
+            SystemShows(Author("Henryk Sienkiewicz"));
+            SystemShows(Publisher("Wydawnictwo Literackie"));         
+        }
+
+        [Test]
+        public void ShouldSearchByTitle()
+        {
+            //given
+            //see SetUp
+            HasBook("Ogniem i mieczem", "Henryk Sienkiewicz", "978-83-08-06015-5", "Wydawnictwo Literackie", 2016, "Podręczniki i lektury szkolne");
+            
+            //when
+            UserEnters("search Ogniem i mieczem");
+
+            Then();
+            SystemShows("Found: 'Ogniem i mieczem'");
+            SystemShows(Title("Ogniem i mieczem"));          
+        }
+
+        private void HasBook(string title, string author, string isbn, string publisher, int year, string category)
+        {
+            booksManager.Create(title, author, isbn, publisher, year, category);
+        }
+
+        private void HasSampleBooks()
+        {
+            booksManager = new BooksManager(CreateBooksDao());
+            application.Setup(booksManager);
         }
 
         private void SystemShowsAtLeastLines(int expectedCount)
@@ -69,22 +126,17 @@ namespace ArqLibrarianClassic.ATests
             userIn.EnterLine(text);
         }
 
-        private void ApplicationStarted()
+        private static void ApplicationStarted()
         {
-            application.Setup(new BooksManager(CreateBooksDao()));
+            // for readibility reasons
         }
 
         private static MemoryBooksDao CreateBooksDao()
         {
+            Generated.ResetBookId();
             var dao = new MemoryBooksDao();
-            dao.Create("Karolcia", "Maria Kruger", "978-83-7568-638-8", "Siedmioróg", 2011, "Literatura dla dzieci i młodzieży");
-            dao.Create("Komunikacja niewerbalna. Płeć i kultura", "Ewa Głażewska, Urszula Kusio", "978-83-7784-177-8", "Wydawnictwo Uniwersytetu Marii Curie-Skłodowskiej", 2012, "Nauki społeczne");
-            dao.Create("O powstawaniu gatunków", "Karol Darwin", "978-83-62948-42-0", "Biblioteka Analiz", 2006, "Literatura popularnonaukowa");
-            dao.Create("Pedagogika ogólna", "Bogusław Śliwerski", "978-83-7850-169-5", "Oficyna Wydawnicza IMPULS", 2013, "Nauki społeczne");
-            dao.Create("Pinokio", "Carlo Collodi", "978-83-7895-249-7", "ZIELONA SOWA", 2009, "Podręczniki i lektury szkolne");
-            dao.Create("Podstawy detektywistyki", "Tomasz Aleksandrowicz, Jerzy Konieczny, Anna Konik", "978-83-60807-30-9", "Łośgraf", 2008, "Prawo");
-            dao.Create("Renesans", "Adam Karpiński","978-83-01-15409-7", "Wydawnictwo Naukowe PWN", 2007, "Nauki humanistyczne");
-            
+            dao.Init();
+          
             return dao;
         }
 

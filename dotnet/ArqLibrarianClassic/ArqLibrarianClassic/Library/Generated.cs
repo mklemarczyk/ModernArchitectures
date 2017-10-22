@@ -16,7 +16,7 @@ namespace ArqLibrarianClassic.Library
         {
             if (ids.ContainsKey(name))
             {
-                long id = ids[name];
+                var id = ids[name];
                 ids[name] = Increment(id);
             }
             else
@@ -31,6 +31,16 @@ namespace ArqLibrarianClassic.Library
         private static long Increment(long id)
         {
             return id + 1;
+        }
+
+        public static void ResetBookId()
+        {
+            ResetIdFor("book");
+        }
+
+        private static void ResetIdFor(string name)
+        {
+            ids[name] = 0;
         }
     }
 }

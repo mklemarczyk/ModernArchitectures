@@ -4,28 +4,27 @@ namespace ArqLibrarianClassic.Library
 {
     public class Book
     {
-        private readonly long id;
-        private readonly string title;
-        private readonly string author;
-        private readonly string isbn;
-        private readonly string publisher;
-        private readonly int year;
-        private readonly string category;
+        public long Id { get; set; }
+        public string Title { get; }
+        public string Author { get; }
+        public string Isbn { get; }
+        public string Publisher { get; }
+        public int Year { get; }
+        public string Category { get; }
 
-        public Book(long id, string title, string author, string isbn, string publisher, int year, string category)
+        public Book(string title, string author, string isbn, string publisher, int year, string category)
         {
-            this.id = id;
-            this.title = title;
-            this.author = author;
-            this.isbn = isbn;
-            this.publisher = publisher;
-            this.year = year;
-            this.category = category;
+            this.Title = title;
+            this.Author = author;
+            this.Isbn = isbn;
+            this.Publisher = publisher;
+            this.Year = year;
+            this.Category = category;
         }
 
         public override string ToString()
         {
-            return $"{this.id}: '{this.title}' - {this.author} [{this.isbn}] '{this.publisher}', {this.year}, '{this.category}'";
+            return $"{this.Id}: '{this.Title}' - {this.Author} [{this.Isbn}] '{this.Publisher}', {this.Year}, '{this.Category}'";
         }
     }
 }
