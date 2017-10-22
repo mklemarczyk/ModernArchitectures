@@ -25,7 +25,14 @@ namespace ArqLibrarianClassic.Library
 
         public Book FindById(long id)
         {
-            return books.FirstOrDefault(b => b.Id == id);
+            var book = books.FirstOrDefault(b => b.Id == id);
+            
+            if (book == null)
+            {
+                throw new LibrarianException($"Book not found with id = {id}");
+            }
+            
+            return book;
         }
 
         public void Save(Book book)

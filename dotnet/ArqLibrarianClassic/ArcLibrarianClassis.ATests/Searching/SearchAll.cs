@@ -24,7 +24,7 @@ namespace ArcLibrarianClassis.ATests.Searching
             
             fixture.Then();
             fixture.SystemShows(LibraryFixture.Title("Karolcia"));
-            fixture.SystemShows(LibraryFixture.Publisher("ZIELONA SOWA"));
+            fixture.SystemShows(LibraryFixture.Author("Maria Kruger"));
             fixture.SystemShows(LibraryFixture.Title("Renesans"));
             fixture.SystemShows(LibraryFixture.Author("Jerzy Konieczny"));
             fixture.SystemShowsAtLeastLines(fixture.StartBooksCount);

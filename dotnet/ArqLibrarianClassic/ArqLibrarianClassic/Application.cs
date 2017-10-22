@@ -67,8 +67,9 @@ namespace ArqLibrarianClassic
 
             booksManager.Rate(bookId, rating);
             var book = booksManager.FindById(bookId);
+            var totalRating = booksManager.ComputeRatingFor(bookId);
             
-            output.PrintLine($"{book.Title} rated: {book.Rating}");
+            output.PrintLine($"{book.Title} rated: {rating}, total rating: {totalRating}");
         }
 
         private void SearchBook(string command)
@@ -83,14 +84,7 @@ namespace ArqLibrarianClassic
                 var toSearch = SubstringAfterFirstSpace(command);
   
                 books = booksManager.FindByTitle(toSearch);
-                if (books.Any())
-                {
-                    output.PrintLine($"Found: '{toSearch}'");
-                }
-                else
-                {
-                    output.PrintLine($"'{toSearch}' title not Found");
-                }
+                output.PrintLine(books.Any() ? $"Found: '{toSearch}'" : $"'{toSearch}' title not Found");
             }
 
             Print(books);
@@ -108,9 +102,10 @@ namespace ArqLibrarianClassic
 
         private void Print(IEnumerable<Book> books)
         {
-            foreach (Book book in books)
+            foreach (var book in books)
             {
-                output.PrintLine(book.ToString());
+                var rating = booksManager.ComputeRatingFor(book.Id);
+                output.PrintLine($"{book.Id}: \"{book.Title}\" - {book.Author}, {book.Category}, rating: {rating}");
             }
         }
 
@@ -118,23 +113,23 @@ namespace ArqLibrarianClassic
         {
             output.PrintLine("Adding a new book");
             output.Print("Title: ");
-            string title = input.ReadLine();
+            var title = input.ReadLine();
             
             output.Print("Author: ");
-            string author = input.ReadLine();
+            var author = input.ReadLine();
 
             output.Print("isbn: ");
-            string isbn = input.ReadLine();
+            var isbn = input.ReadLine();
             
             output.Print("Publihser: ");
-            string publisher = input.ReadLine();
+            var publisher = input.ReadLine();
             
             output.Print("Year: ");
             var yearString = input.ReadLine();
-            int year = int.Parse(yearString);
+            var year = int.Parse(yearString);
             
             output.Print("Category: ");
-            string category = input.ReadLine();
+            var category = input.ReadLine();
 
             booksManager.Create(title, author, isbn, publisher, year, category);
         }

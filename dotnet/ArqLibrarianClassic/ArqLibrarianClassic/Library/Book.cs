@@ -1,4 +1,6 @@
-﻿namespace ArqLibrarianClassic.Library
+﻿using System.Collections.Generic;
+
+namespace ArqLibrarianClassic.Library
 {
     public class Book
     {
@@ -9,7 +11,8 @@
         public string Publisher { get; }
         public int Year { get; }
         public string Category { get; }
-        public int Rating { get; set; }
+        
+        public List<SingleRating> Ratings { get; } = new List<SingleRating>();
 
         public Book(string title, string author, string isbn, string publisher, int year, string category)
         {
@@ -19,7 +22,6 @@
             this.Publisher = publisher;
             this.Year = year;
             this.Category = category;
-            this.Rating = -1;
         }
 
         public override string ToString()
@@ -30,7 +32,14 @@
 
         private string RatingString()
         {
-            return this.Rating > 0 ? $"rating: {this.Rating.ToString()}" : ". Not rated yet.";
+            return "";
+            // move to application
+            // return this.Rating > 0 ? $"rating: {this.Rating.ToString()}" : ". Not rated yet.";
+        }
+
+        public void Add(SingleRating singleRating)
+        {
+            this.Ratings.Add(singleRating);
         }
     }
 }

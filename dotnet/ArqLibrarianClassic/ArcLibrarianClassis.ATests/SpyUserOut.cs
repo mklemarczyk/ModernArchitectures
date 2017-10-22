@@ -27,17 +27,29 @@ namespace ArcLibrarianClassis.ATests
             history.Add("");
         }
 
+        internal void AssertCountainsAtLeastLines(int expectedCount)
+        {
+            if (history.Count < expectedCount)
+            {
+                Assert.Fail($"{Environment.NewLine}" +
+                            $"UI contains less than {expectedCount} lines{Environment.NewLine}" +
+                            $"{this.FormatHistory()}");
+            }
+        }
+
         internal void AssertContains(string expression)
         {
             if (history.Count == 0) 
             {
-                Assert.Fail("No entries containing: " + expression);
+                Assert.Fail("No console entries at all. Especially: " + expression);
             }
 
-            Assert.IsTrue(history.FindAll(x => Regex.IsMatch(x, expression)).Count > 0,
-                $"{Environment.NewLine}" +
-                $"UI does not contain '{expression}'.{Environment.NewLine}" +
-                $"{this.FormatHistory()}");
+            if (history.FindAll(x => Regex.IsMatch(x, expression)).Count == 0)
+            {
+                Assert.Fail($"{Environment.NewLine}" +
+                            $"UI does not contain '{expression}'.{Environment.NewLine}" +
+                            $"{this.FormatHistory()}");
+            }
         }
 
         private string FormatHistory()
@@ -45,14 +57,6 @@ namespace ArcLibrarianClassis.ATests
             return $"History:{Environment.NewLine}" +
                    $"========={Environment.NewLine}" +
                    $"{string.Join($"{Environment.NewLine}", history)}";
-        }
-
-        public void AssertCountainsAtLeastLines(int expectedCount)
-        {
-            Assert.GreaterOrEqual(history.Count, expectedCount, 
-                $"{Environment.NewLine}" +
-                $"UI contains less than {expectedCount} lines{Environment.NewLine}" +
-                $"{this.FormatHistory()}");
         }
 
         public void OnTextLineEntered(string text)

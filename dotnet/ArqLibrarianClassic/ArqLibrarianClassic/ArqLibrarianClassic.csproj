@@ -37,6 +37,7 @@
     <Compile Include="Library\BooksManager.cs" />
     <Compile Include="Library\Generated.cs" />
     <Compile Include="Library\MemoryBooksDao.cs" />
+    <Compile Include="Library\SingleRating.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Application.cs" />

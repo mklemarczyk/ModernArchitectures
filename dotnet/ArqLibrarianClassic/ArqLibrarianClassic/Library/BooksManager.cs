@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace ArqLibrarianClassic.Library
 {
@@ -29,12 +30,8 @@ namespace ArqLibrarianClassic.Library
         public void Rate(long id, int rating)
         {
             Book book = dao.FindById(id);
-            if (book == null)
-            {
-                throw new LibrarianException($"Book not found with id = {id}");
-            }
 
-            book.Rating = rating;
+            book.Add(new SingleRating(rating));
 
             dao.Save(book);
         }
@@ -42,6 +39,19 @@ namespace ArqLibrarianClassic.Library
         public Book FindById(long id)
         {
             return dao.FindById(id);
+        }
+
+        public double ComputeRatingFor(long bookId)
+        {
+            var book = dao.FindById(bookId);
+
+            if (book.Ratings.Count == 0)
+            {
+                return -1.0;
+            }
+            
+            
+            return book.Ratings.Average(b => b.Rating);
         }
     }
 }
