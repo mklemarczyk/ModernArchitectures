@@ -34,7 +34,7 @@
     <Compile Include="GeneratedTest.cs" />
     <Compile Include="InputAware.cs" />
     <Compile Include="Library\AdddingBooks.cs" />
-    <Compile Include="Library\LibraryFixture.cs" />
+    <Compile Include="Library\BaseFixture.cs" />
     <Compile Include="Rating\Rate.cs" />
     <Compile Include="Searching\SearchAll.cs" />
     <Compile Include="Searching\SearchByTitle.cs" />
