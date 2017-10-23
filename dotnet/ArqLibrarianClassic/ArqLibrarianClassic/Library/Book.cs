@@ -33,8 +33,6 @@ namespace ArqLibrarianClassic.Library
         private string RatingString()
         {
             return "";
-            // move to application
-            // return this.Rating > 0 ? $"rating: {this.Rating.ToString()}" : ". Not rated yet.";
         }
 
         public void Add(SingleRating singleRating)

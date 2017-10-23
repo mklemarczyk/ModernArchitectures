@@ -9,7 +9,11 @@ namespace ArqLibrarianClassic
         private readonly UserIn input;
         private readonly UserOut output;
         private BooksManager booksManager;
+        private BorrowingManager borrowingManager;
 
+        //for now application works for the only sample user with id = 1
+        //it will be more dynamic when login process will be supported
+        long userId = 1L;
 
         public Application(UserIn input, UserOut output)
         {
@@ -45,7 +49,7 @@ namespace ArqLibrarianClassic
                         AddBook();
                         break;
                     case "borrow":
-                        output.PrintLine("Borrow entered");
+                        BorrowBook(args);
                         break;
                     default:
                         output.PrintLine($"Comand {commandName} not recognized");
@@ -54,6 +58,15 @@ namespace ArqLibrarianClassic
             }
 
             return running;
+        }
+
+        private void BorrowBook(string[] args)
+        {
+            var bookId = long.Parse(args[1]);
+            borrowingManager.Borrow(userId, bookId);
+            var book = booksManager.FindById(bookId);
+            
+            output.PrintLine($"Borrowed: {BasicInfoFor(book)}");
         }
 
         private void RateBook(string[] args)
@@ -105,8 +118,13 @@ namespace ArqLibrarianClassic
             foreach (var book in books)
             {
                 var rating = booksManager.ComputeRatingFor(book.Id);
-                output.PrintLine($"{book.Id}: \"{book.Title}\" - {book.Author}, {book.Category}, rating: {rating}");
+                output.PrintLine($"{BasicInfoFor(book)}, rating: {rating}");
             }
+        }
+
+        private string BasicInfoFor(Book book)
+        {
+            return $"{book.Id}: \"{book.Title}\" - {book.Author}, {book.Category}";
         }
 
         private void AddBook()
@@ -137,6 +155,11 @@ namespace ArqLibrarianClassic
         public void Setup(BooksManager manager)
         {
             this.booksManager = manager;
+        }
+
+        public void Setup(BorrowingManager manager)
+        {
+            this.borrowingManager = manager;
         }
     }
 }
