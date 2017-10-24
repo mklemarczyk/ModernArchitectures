@@ -1,5 +1,4 @@
-﻿using System;
-namespace ArqLibrarianClassic
+﻿namespace ArqLibrarianClassic
 {
     public interface UserIn
     {

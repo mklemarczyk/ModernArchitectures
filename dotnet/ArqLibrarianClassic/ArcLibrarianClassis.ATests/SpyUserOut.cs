@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using ArqLibrarianClassic;
 using NUnit.Framework;
 
-namespace ArqLibrarianClassic.ATests
+namespace ArcLibrarianClassis.ATests
 {
-    public class SpyUserOut : UserOut
+    public class SpyUserOut : UserOut, InputAware
     {
         private readonly List<string> history = new List<string>();
 
@@ -25,17 +27,29 @@ namespace ArqLibrarianClassic.ATests
             history.Add("");
         }
 
-        internal void AssertContains(string text)
+        internal void AssertCountainsAtLeastLines(int expectedCount)
+        {
+            if (history.Count < expectedCount)
+            {
+                Assert.Fail($"{Environment.NewLine}" +
+                            $"UI contains less than {expectedCount} lines{Environment.NewLine}" +
+                            $"{this.FormatHistory()}");
+            }
+        }
+
+        internal void AssertContains(string expression)
         {
             if (history.Count == 0) 
             {
-                Assert.Fail("No entries containing: " + text);
+                Assert.Fail("No console entries at all. Especially: " + expression);
             }
 
-            Assert.IsTrue(history.FindAll(x => x.Contains(text)).Count > 0,
-                $"{Environment.NewLine}" +
-                $"UI does not contain '{text}'.{Environment.NewLine}" +
-                $"{this.FormatHistory()}");
+            if (history.FindAll(x => Regex.IsMatch(x, expression)).Count == 0)
+            {
+                Assert.Fail($"{Environment.NewLine}" +
+                            $"UI does not contain '{expression}'.{Environment.NewLine}" +
+                            $"{this.FormatHistory()}");
+            }
         }
 
         private string FormatHistory()
@@ -45,12 +59,9 @@ namespace ArqLibrarianClassic.ATests
                    $"{string.Join($"{Environment.NewLine}", history)}";
         }
 
-        public void AssertCountainsAtLeastLines(int expectedCount)
+        public void OnTextLineEntered(string text)
         {
-            Assert.GreaterOrEqual(history.Count, expectedCount, 
-                $"{Environment.NewLine}" +
-                $"UI contains less than {expectedCount} lines{Environment.NewLine}" +
-                $"{this.FormatHistory()}");
+            PrintLine(text);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace ArqLibrarianClassic.Library
 {
@@ -12,11 +11,36 @@ namespace ArqLibrarianClassic.Library
             return IdFor("book");
         }
 
+        public static long BorrowingId()
+        {
+            return IdFor("borrowing");
+        }
+        
+        public static long UserId()
+        {
+            return IdFor("user");
+        }
+
+        public static void ResetUserId()
+        {
+            ResetIdFor("user");
+        }
+
+        public static void ResetBorrowingId()
+        {
+            ResetIdFor("borrowing");
+        }
+
+        public static void ResetBookId()
+        {
+            ResetIdFor("book");
+        }
+
         private static long IdFor(string name)
         {
             if (ids.ContainsKey(name))
             {
-                long id = ids[name];
+                var id = ids[name];
                 ids[name] = Increment(id);
             }
             else
@@ -31,6 +55,11 @@ namespace ArqLibrarianClassic.Library
         private static long Increment(long id)
         {
             return id + 1;
+        }
+
+        private static void ResetIdFor(string name)
+        {
+            ids[name] = 0;
         }
     }
 }

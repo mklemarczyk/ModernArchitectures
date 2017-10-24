@@ -31,10 +31,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\GeneratedTest.cs" />
+    <Compile Include="Borrowing\BorrowABook.cs" />
+    <Compile Include="GeneratedTest.cs" />
+    <Compile Include="InputAware.cs" />
+    <Compile Include="Library\AdddingBooks.cs" />
+    <Compile Include="Library\BaseFixture.cs" />
+    <Compile Include="Rating\Rate.cs" />
+    <Compile Include="Searching\SearchAll.cs" />
+    <Compile Include="Searching\SearchByTitle.cs" />
     <Compile Include="SpyUserIn.cs" />
     <Compile Include="SpyUserOut.cs" />
-    <Compile Include="Starting.cs" />
+    <Compile Include="Startup\ApplicationStartup.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

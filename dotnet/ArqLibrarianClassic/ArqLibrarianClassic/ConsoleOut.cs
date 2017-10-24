@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace ArqLibrarianClassic
 {
     public class ConsoleOut : UserOut

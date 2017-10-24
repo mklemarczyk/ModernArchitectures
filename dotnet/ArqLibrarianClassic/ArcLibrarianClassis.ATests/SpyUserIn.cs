@@ -1,17 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using ArqLibrarianClassic;
 
-namespace ArqLibrarianClassic.ATests
+namespace ArcLibrarianClassis.ATests
 {
     public class SpyUserIn : UserIn
     {
-        private Queue<string> entered = new Queue<string>();
+        private readonly InputAware input;
+        private readonly Queue<string> entered = new Queue<string>();
+
+        public SpyUserIn(InputAware input)
+        {
+            this.input = input;
+        }
 
         internal void EnterLine(string text)
         {
             entered.Enqueue(text);
+            input.OnTextLineEntered(text);
         }
 
         public string ReadLine()
