@@ -19,7 +19,7 @@ namespace ArcLibrarianClassis.ATests.Rating
             fixture.ApplicationStarted();
             fixture.HasSampleBooks();
             fixture.HasBook("Ogniem i mieczem", "Henryk Sienkiewicz", "978-83-08-06015-5", "Wydawnictwo Literackie", 2016, "Podręczniki i lektury szkolne");
-            long id = fixture.BookByTitle("Ogniem i mieczem");
+            long id = fixture.BookIdByTitle("Ogniem i mieczem");
             const int Rating = 4;
 
             //when
@@ -37,7 +37,7 @@ namespace ArcLibrarianClassis.ATests.Rating
             fixture.ApplicationStarted();
             fixture.HasSampleBooks();
             fixture.HasBook("Ogniem i mieczem", "Henryk Sienkiewicz", "978-83-08-06015-5", "Wydawnictwo Literackie", 2016, "Podręczniki i lektury szkolne");
-            long id = fixture.BookByTitle("Ogniem i mieczem");
+            long id = fixture.BookIdByTitle("Ogniem i mieczem");
             const int firstRating = 4;
             fixture.UserEnters($"rate {id} {firstRating}");
             

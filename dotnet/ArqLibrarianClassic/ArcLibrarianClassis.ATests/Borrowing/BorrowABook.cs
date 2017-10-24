@@ -22,7 +22,7 @@ namespace ArcLibrarianClassis.ATests.Borrowing
             fixture.HasSampleUsers();
             
             fixture.HasBook("Ogniem i mieczem", "Henryk Sienkiewicz", "978-83-08-06015-5", "Wydawnictwo Literackie", 2016, "Podręczniki i lektury szkolne");
-            var id = fixture.BookByTitle("Ogniem i mieczem");
+            var id = fixture.BookIdByTitle("Ogniem i mieczem");
             
             //when
             fixture.UserEnters($"borrow {id}");

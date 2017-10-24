@@ -122,7 +122,7 @@ namespace ArcLibrarianClassis.ATests.Library
             return publisher;
         }
 
-        public long BookByTitle(string title)
+        public long BookIdByTitle(string title)
         {
             return this.booksManager.FindByTitle(title).FirstOrDefault().Id;
         }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ArqLibraryClassic.iml" filepath="$PROJECT_DIR$/ArqLibraryClassic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ArqLibraryLayered/ArqLibraryLayered.iml" filepath="$PROJECT_DIR$/ArqLibraryLayered/ArqLibraryLayered.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ArqLibraryLayeredATests/ArqLibraryLayeredATests.iml" filepath="$PROJECT_DIR$/ArqLibraryLayeredATests/ArqLibraryLayeredATests.iml" />
+    </modules>
+  </component>
+</project>

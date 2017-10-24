@@ -3,7 +3,7 @@
 namespace ArcLibrarianClassis.ATests.Library
 {
     [TestFixture]
-    public class AdddingBooks
+    public class AddABook
     {
         private LibraryFixture fixture;
 
@@ -30,9 +30,8 @@ namespace ArcLibrarianClassis.ATests.Library
             fixture.UserEnters("search");
             
             fixture.Then();
-            fixture.SystemShows(LibraryFixture.Title("Ogniem i mieczem"));
-            fixture.SystemShows(LibraryFixture.Author("Henryk Sienkiewicz"));
-            fixture.SystemShows(LibraryFixture.Publisher("Wydawnictwo Literackie"));         
+            
+            fixture.SystemShows("Ogniem i mieczem*Henryk Sienkiewicz*Podręczniki i lektury szkolne");
         }       
     }
 }
