@@ -1,4 +1,4 @@
-﻿namespace ArcLibrarianClassis.ATests
+﻿﻿namespace ArcLibrarianClassis.ATests
 {
     public interface InputAware
     {
