@@ -17,11 +17,14 @@ namespace ArcLibrarianClassis.ATests.Searching
         [Test]
         public void ShouldSearchAllBooks()
         {
+            // given
             fixture.ApplicationStarted();
             fixture.HasSampleBooks();
 
+            // when
             fixture.UserEnters("search");
             
+            //than
             fixture.Then();
             fixture.SystemShows(LibraryFixture.Title("Karolcia"));
             fixture.SystemShows(LibraryFixture.Author("Maria Kruger"));
