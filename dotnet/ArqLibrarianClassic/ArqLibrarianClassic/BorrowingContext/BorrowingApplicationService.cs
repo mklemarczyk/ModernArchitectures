@@ -15,14 +15,23 @@
         {
             var user = new UserId(userId);
             var book = new BookId(bookId);
-            var terms = borrowingFactory.CreateTerms(null);
+            var terms = borrowingFactory.CreateTerms("long");
 
             borrowingDao.Add(borrowingFactory.CreateBorrowing(user, book, terms));
         }
 
         public bool Borrowed(long bookId)
         {
-            return borrowingDao.FindByBookId(bookId) != null;
+            return borrowingDao.FindNotReturnedByBookId(bookId) != null;
+        }
+
+        public void Return(long bookId)
+        {
+            var book = new BookId(bookId);
+            var borrowing = borrowingDao.FindNotReturnedByBookId(bookId);
+
+            borrowing.Return();
+            borrowingDao.Update(borrowing);
         }
     }
 }

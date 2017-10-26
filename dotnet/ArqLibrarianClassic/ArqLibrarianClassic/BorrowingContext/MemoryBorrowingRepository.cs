@@ -31,6 +31,19 @@ namespace ArqLibrarianClassic.BorrowingContext
             return null;
         }
 
+        public Borrowing FindNotReturnedByBookId(long id)
+        {
+            foreach (var borrowing in borrowings)
+            {
+                if (borrowing.BookId == id && borrowing.ReturnDate == null)
+                {
+                    return borrowing;
+                }
+            }
+
+            return null;
+        }
+
         public void Init()
         {
             // no borrowings at start yet
