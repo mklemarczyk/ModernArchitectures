@@ -20,11 +20,14 @@ public class SearchAll {
     @Test
     public void shouldSearchAllBooks()
     {
+        //given
         fixture.applicationStarted();
         fixture.hasSampleBooks();
 
+        //when
         fixture.userEnters("search");
 
+        //then
         fixture.then();
         fixture.systemShows(title("Karolcia"));
         fixture.systemShows(author("Maria Kruger"));
