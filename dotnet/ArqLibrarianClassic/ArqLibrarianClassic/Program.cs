@@ -11,13 +11,14 @@ namespace ArqLibrarianClassic
             var application = new Application(new ConsoleIn(), new ConsoleOut());
             var booksDao = CreateBooksDao();
             application.Setup(new BooksManager(booksDao));
-            application.Setup(new BorrowingApplicationService(CreateBorrowingFactory(), CreateMemoryBorrowingDao()));
+            var borrowingRepository = CreateMemoryBorrowingDao();
+            application.Setup(new BorrowingApplicationService(CreateBorrowingFactory(borrowingRepository), borrowingRepository));
             application.Start();
         }
 
-        private static BorrowingFactory CreateBorrowingFactory()
+        private static BorrowingFactory CreateBorrowingFactory(BorrowingRepository repository)
         {
-            var factory = new BorrowingFactory();
+            var factory = new BorrowingFactory(repository);
 
             return factory;
         }

@@ -30,7 +30,8 @@ namespace ArcLibrarianClassis.ATests.Library
             this.application.Setup(this.booksManager);
             
             this.userDao = CreateUserDao();
-            this.borrowingManager = new BorrowingApplicationService(CreateBorrowingFactory(), CreateBorrowingDao());
+            var repository = CreateBorrowingDao();
+            this.borrowingManager = new BorrowingApplicationService(CreateBorrowingFactory(repository), repository);
             this.application.Setup(this.borrowingManager);
         }
 
@@ -90,9 +91,9 @@ namespace ArcLibrarianClassis.ATests.Library
             return dao;
         }
 
-        private static BorrowingFactory CreateBorrowingFactory()
+        private static BorrowingFactory CreateBorrowingFactory(BorrowingRepository repository)
         {
-            var factory = new BorrowingFactory();
+            var factory = new BorrowingFactory(repository);
 
             return factory;
         }
