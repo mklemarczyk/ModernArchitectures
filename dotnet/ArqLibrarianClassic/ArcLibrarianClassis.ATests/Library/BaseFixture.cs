@@ -1,5 +1,6 @@
-﻿﻿using System.Linq;
+﻿using System.Linq;
 using ArqLibrarianClassic;
+using ArqLibrarianClassic.BorrowingContext;
 using ArqLibrarianClassic.Library;
 
 namespace ArcLibrarianClassis.ATests.Library
@@ -14,7 +15,7 @@ namespace ArcLibrarianClassis.ATests.Library
         private SpyUserOut userOut;
         
         private BooksManager booksManager;
-        private BorrowingManager borrowingManager;
+        private BorrowingApplicationService borrowingManager;
         private UserDao userDao;
 
         public void ApplicationStarted()
@@ -29,7 +30,7 @@ namespace ArcLibrarianClassis.ATests.Library
             this.application.Setup(this.booksManager);
             
             this.userDao = CreateUserDao();
-            this.borrowingManager = new BorrowingManager(this.userDao, booksDao, CreateBorrowingDao());
+            this.borrowingManager = new BorrowingApplicationService(CreateBorrowingFactory(), CreateBorrowingDao());
             this.application.Setup(this.borrowingManager);
         }
 
@@ -82,26 +83,33 @@ namespace ArcLibrarianClassis.ATests.Library
 
         private static MemoryBooksDao CreateBooksDao()
         {
-            Generated.ResetBookId();
+            ArqLibrarianClassic.Library.Generated.ResetBookId();
             var dao = new MemoryBooksDao();
             dao.Clear();
             
             return dao;
         }
-        
+
+        private static BorrowingFactory CreateBorrowingFactory()
+        {
+            var factory = new BorrowingFactory();
+
+            return factory;
+        }
+
         private static UserDao CreateUserDao()
         {
-            Generated.ResetUserId();
+            ArqLibrarianClassic.Library.Generated.ResetUserId();
             var dao = new MemoryUserDao();
             dao.Clear();
             
             return dao;            
         }
         
-        private BorrowingDao CreateBorrowingDao()
+        private BorrowingRepository CreateBorrowingDao()
         {
-            Generated.ResetBorrowingId();
-            var dao = new MemoryBorrowingDao();
+            ArqLibrarianClassic.BorrowingContext.Generated.ResetBorrowingId();
+            var dao = new MemoryBorrowingRepository();
             dao.Clear();
             
             return dao; 
