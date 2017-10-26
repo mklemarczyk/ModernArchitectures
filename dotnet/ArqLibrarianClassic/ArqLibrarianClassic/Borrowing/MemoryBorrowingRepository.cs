@@ -1,15 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ArqLibrarianClassic.Library
 {
-    public class MemoryBorrowingDao : BorrowingDao
+    public class MemoryBorrowingRepository : BorrowingRepository
     {
         private static List<Borrowing> borrowings = new List<Borrowing>();
         
-        public void Insert(Borrowing borrowing)
+        public void Add(Borrowing borrowing)
         {
             borrowing.Id = Generated.BorrowingId();
             borrowings.Add(borrowing);
+        }
+
+        public void Update(Borrowing borrowing)
+        {
+            throw new NotImplementedException();
         }
 
         public Borrowing FindByBookId(long id)

@@ -9,13 +9,13 @@ namespace ArqLibrarianClassic
             var application = new Application(new ConsoleIn(), new ConsoleOut());
             var booksDao = CreateBooksDao();
             application.Setup(new BooksManager(booksDao));
-            application.Setup(new BorrowingManager(CreateMemoryUserDao(), booksDao, CreateMemoryBorrowingDao()));
+            application.Setup(new BorrowingApplicationService(CreateMemoryUserDao(), booksDao, CreateMemoryBorrowingDao()));
             application.Start();
         }
 
-        private static MemoryBorrowingDao CreateMemoryBorrowingDao()
+        private static MemoryBorrowingRepository CreateMemoryBorrowingDao()
         {
-            var dao = new MemoryBorrowingDao();
+            var dao = new MemoryBorrowingRepository();
             dao.Init();
             
             return dao;

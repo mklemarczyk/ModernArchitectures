@@ -2,13 +2,13 @@
 
 namespace ArqLibrarianClassic
 {
-    public class BorrowingManager
+    public class BorrowingApplicationService
     {
         private readonly UserDao userDao;
         private readonly BooksDao bookDao;
-        private readonly BorrowingDao borrowingDao;
+        private readonly BorrowingRepository borrowingDao;
 
-        public BorrowingManager(UserDao userDao, BooksDao bookDao, BorrowingDao borrowingDao)
+        public BorrowingApplicationService(UserDao userDao, BooksDao bookDao, BorrowingRepository borrowingDao)
         {
             this.userDao = userDao;
             this.bookDao = bookDao;
@@ -20,7 +20,7 @@ namespace ArqLibrarianClassic
             var user = userDao.FindById(userId);
             var book = bookDao.FindById(bookId);
 
-            borrowingDao.Insert(new Borrowing(user, book));
+            borrowingDao.Add(new Borrowing(user, book));
         }
 
         public bool Borrowed(long bookId)

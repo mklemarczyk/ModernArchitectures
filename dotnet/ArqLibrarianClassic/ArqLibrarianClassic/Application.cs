@@ -9,7 +9,7 @@ namespace ArqLibrarianClassic
         private readonly UserIn input;
         private readonly UserOut output;
         private BooksManager booksManager;
-        private BorrowingManager borrowingManager;
+        private BorrowingApplicationService borrowingManager;
 
         //for now application works for the only sample user with id = 1
         //it will be more dynamic when login process will be supported
@@ -175,7 +175,7 @@ namespace ArqLibrarianClassic
             this.booksManager = manager;
         }
 
-        public void Setup(BorrowingManager manager)
+        public void Setup(BorrowingApplicationService manager)
         {
             this.borrowingManager = manager;
         }
