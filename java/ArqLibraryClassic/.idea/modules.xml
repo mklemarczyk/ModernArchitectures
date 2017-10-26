@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ArqLibraryClassic.iml" filepath="$PROJECT_DIR$/ArqLibraryClassic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ArqLibraryLayerdTest/ArqLibraryLayerdTest.iml" filepath="$PROJECT_DIR$/ArqLibraryLayerdTest/ArqLibraryLayerdTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/ArqLibraryLayered/ArqLibraryLayered.iml" filepath="$PROJECT_DIR$/ArqLibraryLayered/ArqLibraryLayered.iml" />
       <module fileurl="file://$PROJECT_DIR$/ArqLibraryLayeredATests/ArqLibraryLayeredATests.iml" filepath="$PROJECT_DIR$/ArqLibraryLayeredATests/ArqLibraryLayeredATests.iml" />
     </modules>

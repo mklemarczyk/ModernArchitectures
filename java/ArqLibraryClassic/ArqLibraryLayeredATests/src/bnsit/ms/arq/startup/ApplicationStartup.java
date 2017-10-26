@@ -15,8 +15,12 @@ public class ApplicationStartup {
 
     @Test
     public void shouldShowWelcomeAtTheBeginning() {
+        //given
+
+        //when
         fixture.applicationStarted();
         fixture.hasSampleBooks();
+
 
         fixture.then();
         fixture.systemShows("Welcome to the ArqLibrarian");
