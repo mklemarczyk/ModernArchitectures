@@ -15,7 +15,6 @@ namespace ArqLibrarianClassic.BorrowingContext
 
         public void Update(Borrowing borrowing)
         {
-            throw new NotImplementedException();
         }
 
         public Borrowing FindByBookId(long id)
