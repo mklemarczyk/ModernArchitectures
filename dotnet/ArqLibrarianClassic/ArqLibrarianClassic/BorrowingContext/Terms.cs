@@ -8,10 +8,14 @@ namespace ArqLibrarianClassic.BorrowingContext
 {
     public class Terms
     {
+        private readonly BorrowingRepository repository;
+
         private string type;
 
-        public Terms(string type)
+        public Terms(BorrowingRepository repository, string type)
         {
+            this.repository = repository;
+
             this.type = type;
         }
     }

@@ -31,7 +31,6 @@
             var borrowing = borrowingDao.FindNotReturnedByBookId(bookId);
 
             borrowing.Return();
-            borrowingDao.Update(borrowing);
         }
     }
 }
