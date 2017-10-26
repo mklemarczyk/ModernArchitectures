@@ -7,7 +7,7 @@ namespace ArqLibrarianClassic.BorrowingContext
         private readonly UserId user;
         private readonly BookId book;
         private readonly DateTime when;
-        private DateTime returnDate;
+        private DateTime? returnDate;
 
         public Borrowing(UserId user, BookId book)
         {
@@ -18,7 +18,7 @@ namespace ArqLibrarianClassic.BorrowingContext
 
         public long Id { get; set; }
         public long BookId => this.book.Id;
-        public DateTime ReturnDate => this.returnDate;
+        public DateTime? ReturnDate => this.returnDate;
 
         public void Return()
         {
