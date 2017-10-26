@@ -1,4 +1,5 @@
-﻿using ArqLibrarianClassic.BorrowingContext;
+﻿using System;
+using ArqLibrarianClassic.BorrowingContext;
 using ArqLibrarianClassic.Library;
 
 namespace ArqLibrarianClassic
@@ -10,8 +11,15 @@ namespace ArqLibrarianClassic
             var application = new Application(new ConsoleIn(), new ConsoleOut());
             var booksDao = CreateBooksDao();
             application.Setup(new BooksManager(booksDao));
-            application.Setup(new BorrowingApplicationService(CreateMemoryBorrowingDao()));
+            application.Setup(new BorrowingApplicationService(CreateBorrowingFactory(), CreateMemoryBorrowingDao()));
             application.Start();
+        }
+
+        private static BorrowingFactory CreateBorrowingFactory()
+        {
+            var factory = new BorrowingFactory();
+
+            return factory;
         }
 
         private static MemoryBorrowingRepository CreateMemoryBorrowingDao()

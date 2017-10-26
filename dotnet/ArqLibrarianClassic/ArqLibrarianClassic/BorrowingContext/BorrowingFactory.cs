@@ -8,7 +8,7 @@ namespace ArqLibrarianClassic.BorrowingContext
 {
     public class BorrowingFactory
     {
-        Borrowing CreateBorrowing(UserId user, BookId book, Terms terms)
+        public Borrowing CreateBorrowing(UserId user, BookId book, Terms terms)
         {
             return new Borrowing(user, book);
         }
