@@ -55,6 +55,9 @@ namespace ArqLibrarianClassic
                     case "status":
                         ShowStatus(args);
                         break;
+                    case "return":
+                        ReturnBook(args);
+                        break;
                     default:
                         output.PrintLine($"Comand {commandName} not recognized");
                         break;
@@ -115,6 +118,15 @@ namespace ArqLibrarianClassic
             }
 
             Print(books);
+        }
+
+        private void ReturnBook(string[] args)
+        {
+            var bookId = long.Parse(args[1]);
+            borrowingManager.Return(bookId);
+            var book = booksManager.FindById(bookId);
+
+            output.PrintLine($"Returned: {BasicInfoFor(book)}");
         }
 
         private static bool HasParameters(string command)
