@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ArqLibrarianClassic.Library
+namespace ArqLibrarianClassic.BorrowingContext
 {
     public class BorrowingFactory
     {
-        Borrowing CreateBorrowing(User user, Book book, Terms terms)
+        Borrowing CreateBorrowing(UserId user, BookId book, Terms terms)
         {
             return new Borrowing(user, book);
         }

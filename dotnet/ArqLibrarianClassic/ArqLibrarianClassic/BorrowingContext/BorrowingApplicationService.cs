@@ -1,24 +1,18 @@
-﻿using ArqLibrarianClassic.Library;
-
-namespace ArqLibrarianClassic
+﻿namespace ArqLibrarianClassic.BorrowingContext
 {
     public class BorrowingApplicationService
     {
-        private readonly UserDao userDao;
-        private readonly BooksDao bookDao;
         private readonly BorrowingRepository borrowingDao;
 
-        public BorrowingApplicationService(UserDao userDao, BooksDao bookDao, BorrowingRepository borrowingDao)
+        public BorrowingApplicationService(BorrowingRepository borrowingDao)
         {
-            this.userDao = userDao;
-            this.bookDao = bookDao;
             this.borrowingDao = borrowingDao;
         }
 
         public void Borrow(long userId, long bookId)
         {
-            var user = userDao.FindById(userId);
-            var book = bookDao.FindById(bookId);
+            var user = new UserId(userId);
+            var book = new BookId(bookId);
 
             borrowingDao.Add(new Borrowing(user, book));
         }

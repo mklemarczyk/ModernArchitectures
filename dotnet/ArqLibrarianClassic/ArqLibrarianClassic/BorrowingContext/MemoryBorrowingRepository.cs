@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ArqLibrarianClassic.Library
+namespace ArqLibrarianClassic.BorrowingContext
 {
     public class MemoryBorrowingRepository : BorrowingRepository
     {

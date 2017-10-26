@@ -1,15 +1,14 @@
 ﻿using System;
-using ArqLibrarianClassic.Library;
 
-namespace ArqLibrarianClassic
+namespace ArqLibrarianClassic.BorrowingContext
 {
     public class Borrowing
     {
-        private readonly User user;
-        private readonly Book book;
+        private readonly UserId user;
+        private readonly BookId book;
         private readonly DateTime when;
 
-        public Borrowing(User user, Book book)
+        public Borrowing(UserId user, BookId book)
         {
             this.user = user;
             this.book = book;

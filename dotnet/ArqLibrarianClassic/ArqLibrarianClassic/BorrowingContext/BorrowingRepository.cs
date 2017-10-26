@@ -1,4 +1,4 @@
-﻿﻿namespace ArqLibrarianClassic
+﻿﻿namespace ArqLibrarianClassic.BorrowingContext
 {
     public interface BorrowingRepository
     {

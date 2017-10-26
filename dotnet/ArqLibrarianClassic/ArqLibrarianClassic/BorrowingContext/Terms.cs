@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ArqLibrarianClassic.Library
+namespace ArqLibrarianClassic.BorrowingContext
 {
     public class Terms
     {

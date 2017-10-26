@@ -32,17 +32,20 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Borrowing\Borrowing.cs" />
-    <Compile Include="Borrowing\BorrowingRepository.cs" />
-    <Compile Include="Borrowing\BorrowingApplicationService.cs" />
-    <Compile Include="Borrowing\BorrowingFactory.cs" />
-    <Compile Include="Borrowing\Terms.cs" />
+    <Compile Include="BorrowingContext\BookId.cs" />
+    <Compile Include="BorrowingContext\Borrowing.cs" />
+    <Compile Include="BorrowingContext\BorrowingRepository.cs" />
+    <Compile Include="BorrowingContext\BorrowingApplicationService.cs" />
+    <Compile Include="BorrowingContext\BorrowingFactory.cs" />
+    <Compile Include="BorrowingContext\Generated.cs" />
+    <Compile Include="BorrowingContext\Terms.cs" />
+    <Compile Include="BorrowingContext\UserId.cs" />
     <Compile Include="Library\LibrarianException.cs" />
     <Compile Include="Library\Book.cs" />
     <Compile Include="Library\BooksManager.cs" />
     <Compile Include="Library\Generated.cs" />
     <Compile Include="Library\MemoryBooksDao.cs" />
-    <Compile Include="Borrowing\MemoryBorrowingRepository.cs" />
+    <Compile Include="BorrowingContext\MemoryBorrowingRepository.cs" />
     <Compile Include="Library\MemoryUserDao.cs" />
     <Compile Include="Library\SingleRating.cs" />
     <Compile Include="Library\User.cs" />
